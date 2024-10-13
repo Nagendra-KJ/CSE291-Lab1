@@ -4,9 +4,9 @@
 
 | Cache | Cache Line Size | Total Size | Associativity | Number of Sets | Raw Latency |
 | ----- | --------------- | ---------- | ------------- | -------------- | ----------- |
-| L1-D  | 64              |            |               |                |             |
-| L2    |                 |            |               |                |             |
-| L3    |                 |            |               |                |             |
+| L1-D  | 64              | 128KB      | 8             | 64             |             |
+| L2    | 64              | 1MB        | 4             |                |             |
+| L3    | 64              | 6MB        | 16            |                |             |
 
 ## 1-3
 

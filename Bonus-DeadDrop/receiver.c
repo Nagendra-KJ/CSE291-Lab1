@@ -18,6 +18,7 @@ int main(int argc, char **argv)
     while (listening) {
 
         // [Bonus] TODO: Put your covert channel code here
+	listening = false;
 
     }
 

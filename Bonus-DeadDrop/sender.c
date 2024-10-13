@@ -5,7 +5,7 @@
 
 // [Bonus] TODO: define your own buffer size
 #define BUFF_SIZE (1<<21)
-//#define BUFF_SIZE TODO
+//#define BUFF_SIZE 1024
 
 int main(int argc, char **argv)
 {
@@ -37,6 +37,8 @@ int main(int argc, char **argv)
 
         // [Bonus] TODO:
         // Put your covert channel code here
+	
+	sending = false;
     
     }
 
