@@ -11,7 +11,7 @@
 #define L1_SIZE 32 * 1024
 #define L2_SIZE 1 * 256 * 1024
 //#define L3_SIZE 6 * 1024 * 1024
-#define BUFF_SIZE 2 * L2_SIZE
+#define BUFF_SIZE 1 * L2_SIZE
  
 int main (int ac, char **av) {
 
@@ -43,7 +43,10 @@ int main (int ac, char **av) {
     for (int i=0; i<SAMPLES; i++){
         // Step 1: bring the target cache line into L1 by simply accessing
         //         the line
-        tmp = target_buffer[0];
+	for (int i = 0; i < 5; ++i)
+        	tmp = target_buffer[0];
+
+	lfence();
 
         // Step 2: measure the access latency
         l1_latency[i] = measure_one_block_access_time((uint64_t)target_buffer);
@@ -57,6 +60,8 @@ int main (int ac, char **av) {
 	// Step 1: ensure the target cache line is flushed and is in DRAM
 	
 	clflush((void *) target_buffer);
+
+	lfence();
 
 	// Step 3: measure the access latency now
 	dram_latency[i] = measure_one_block_access_time((uint64_t)target_buffer);
@@ -72,9 +77,11 @@ int main (int ac, char **av) {
         tmp = target_buffer[0];
 
 	// Step 2: flush the L1 cache
-	for (int j=0; j<3 * L1_SIZE; j++){
+	for (int j=0; j<1 * L1_SIZE; j++){
 	    tmp = eviction_buffer[j];
 	}
+
+	lfence();
 
         // Step 2: measure the access latency
         l2_latency[i] = measure_one_block_access_time((uint64_t)target_buffer);
@@ -90,9 +97,14 @@ int main (int ac, char **av) {
         //         the line
         tmp = target_buffer[0];
 
-	// Step 2: flush the L1 cache
-	for (int j=0; j<BUFF_SIZE; j++){
+	lfence();
+
+	// Step 2: flush the L1 & L2 cache
+        for (int k=0; k<100; ++k) {
+	  for (int j=0; j<BUFF_SIZE; j++){
 	    tmp = eviction_buffer[j];
+	  }
+	  lfence();
 	}
 
         // Step 2: measure the access latency

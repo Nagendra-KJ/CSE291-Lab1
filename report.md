@@ -4,9 +4,9 @@
 
 | Cache | Cache Line Size | Total Size | Associativity | Number of Sets | Raw Latency |
 | ----- | --------------- | ---------- | ------------- | -------------- | ----------- |
-| L1-D  | 64              | 128KB      | 8             | 64             |             |
-| L2    | 64              | 1MB        | 4             |                |             |
-| L3    | 64              | 6MB        | 16            |                |             |
+| L1-D  | 64              | 128KB      | 8             | 256  (64 x 4)  | 24          |
+| L2    | 64              | 1MB        | 4             | 4096 (1024 x 4)| 24          |
+| L3    | 64              | 6MB        | 16            | 6144           | 46          |
 
 ## 1-3
 
@@ -18,9 +18,9 @@
 
 **Based on the generated histogram, report two thresholds, one to distinguish between L2 and L3 latency and the other to distinguish between L3 and DRAM latency.**
 
-L2-L3 threshold:
+L2-L3 threshold: 35 cycles
 
-L3-DRAM threshold:
+L3-DRAM threshold: 100 cycles
 
 ## 2-2
 

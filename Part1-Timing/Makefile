@@ -9,7 +9,7 @@ run-visual: main-visual
 	@taskset -c $(SENDER_CPU) ./main-visual
 
 main: main.c Makefile
-	@gcc main.c -o main
+	@gcc main.c -O0 -o main
 
 main-visual: main.c Makefile
 	@gcc main.c -DVISUAL -o main-visual
@@ -18,3 +18,4 @@ main-visual: main.c Makefile
 
 clean:
 	rm -f main
+	rm -f main-visual
