@@ -11,7 +11,7 @@
 #define L1_SIZE 32 * 1024
 #define L2_SIZE 1 * 256 * 1024
 //#define L3_SIZE 6 * 1024 * 1024
-#define BUFF_SIZE 1 * L2_SIZE
+#define BUFF_SIZE 3 * L2_SIZE
  
 int main (int ac, char **av) {
 
