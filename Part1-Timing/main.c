@@ -77,7 +77,7 @@ int main (int ac, char **av) {
         tmp = target_buffer[0];
 
 	// Step 2: flush the L1 cache
-	for (int j=0; j<1 * L1_SIZE; j++){
+	for (int j=0; j<2 * L1_SIZE; j++){
 	    tmp = eviction_buffer[j];
 	}
 

@@ -30,4 +30,9 @@ char *binary_to_string(char *data);
 
 int string_to_int(char* s);
 
+static inline void lfence() {
+    asm volatile("lfence");
+}
+
+
 #endif

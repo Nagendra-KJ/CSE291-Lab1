@@ -18,7 +18,7 @@ run_sender: sender
 	taskset -c $(SENDER_CPU) ./sender
 
 run_receiver: receiver
-	taskset -c $(RECEIVER_CPU) ./receiver
+	taskset -c $(RECEIVER_CPU) ./receiver | tee -a receiver_log
 
 .PHONY:	clean
 
